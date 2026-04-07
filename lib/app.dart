@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:study_mate/core/navigation/app_router.dart';
+import 'package:study_mate/core/navigation/route_names.dart';
 import 'core/theme/app_theme.dart';
-import 'features/home/view/home_screen.dart';
 
 class StudyMateApp extends StatelessWidget {
   const StudyMateApp({super.key});
@@ -11,10 +10,15 @@ class StudyMateApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Study Mate',
+
+      ///theme
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.light,
-      home: HomeScreen(),
+
+      ///navigation
+      initialRoute: RouteNames.home,
+      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }
