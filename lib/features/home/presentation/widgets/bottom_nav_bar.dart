@@ -22,15 +22,15 @@ class BottomNavBar extends StatelessWidget {
   String _getLabel(int index) {
     switch (index) {
       case 0:
-        return "Home";
+        return "الرئيسية";
       case 1:
-        return "Subject";
+        return "المواد";
       case 2:
-        return "Exams";
+        return "الامتحانات";
       case 3:
-        return "Lists";
+        return "الجدول";
       case 4:
-        return "GPA";
+        return "المعدل";
       default:
         return "";
     }
@@ -80,8 +80,8 @@ class BottomNavBar extends StatelessWidget {
               return BottomNavigationBarItem(
                 icon: Image.asset(
                   _imageList[index],
-                  width: isSelected ? 26 : 20,
-                  height: isSelected ? 26 : 20,
+                  width: isSelected ? 28 : 22,
+                  height: isSelected ? 28 : 22,
                   color: isSelected ? AppColors.blue : AppColors.grey,
                 ),
                 label: _getLabel(index),

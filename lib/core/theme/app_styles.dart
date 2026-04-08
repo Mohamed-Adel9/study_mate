@@ -8,6 +8,11 @@ abstract class AppTextStyles {
       fontWeight: FontWeight.w500,
       height: 0
   );
+  static const TextStyle style30bold = TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      height: 0
+  );
   static const TextStyle style22 = TextStyle(
       color: Colors.black,
       fontSize: 22,
@@ -32,6 +37,11 @@ abstract class AppTextStyles {
     fontSize: 24,
     fontWeight: FontWeight.w600,
     height: 0,
+  );
+
+  static const TextStyle style14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
   );
 
 

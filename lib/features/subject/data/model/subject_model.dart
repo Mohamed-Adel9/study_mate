@@ -15,7 +15,7 @@ class SubjectModel extends SubjectEntity {
     );
   }
 
-  Map<String,dynamic>toJSon(){
+  Map<String,dynamic>toJson(){
     return{
       "id":id,
       "name":name,

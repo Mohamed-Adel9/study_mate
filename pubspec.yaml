@@ -41,9 +41,7 @@ dependencies:
   intl: ^0.20.2
   equatable: ^2.0.8
   get_it: ^9.2.1
-  animated_bottom_navigation_bar: ^1.4.0
-  water_drop_nav_bar: ^2.2.2
-  font_awesome_flutter: ^11.0.0
+
 
 dev_dependencies:
   flutter_test:
