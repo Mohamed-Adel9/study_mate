@@ -5,7 +5,7 @@ import 'package:study_mate/features/subject/presentation/widgets/subject_card.da
 
 import '../bloc/subject_cubit.dart';
 import '../bloc/subject_state.dart';
-import '../widgets/add_subject_header.dart';
+import '../../../../core/widgets/add_thing_header.dart';
 
 class AddSubjectScreen extends StatefulWidget {
   const AddSubjectScreen({super.key});
@@ -49,12 +49,12 @@ class _AddSubjectScreenState extends State<AddSubjectScreen> {
               padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(
                 child: SizedBox(
-                  height: MediaQuery.sizeOf(context).height*.8,
+                  height: MediaQuery.sizeOf(context).height*.9,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // ── Header ─────────────────────────────────────────────
-                      AddSubjectHeader(),
+                      AddThingHeader(label: "اضافه مادة جديدة",),
 
                       const SizedBox(height: 20),
 

@@ -26,9 +26,9 @@ class SubjectLoaded extends SubjectState {
 
   const SubjectLoaded(
     this.subjects, {
-    String name = '',
-    Color color = AppColors.blue,
-  }) : super(name: name, color: color);
+    super.name,
+    super.color,
+  });
 
   /// Creates a copy with optional overrides — keeps list & form state together.
   SubjectLoaded copyWith({
@@ -49,7 +49,7 @@ class SubjectError extends SubjectState {
 
   const SubjectError(
     this.message, {
-    String name = '',
-    Color color = AppColors.red,
-  }) : super(name: name, color: color);
+    super.name,
+    super.color = AppColors.red,
+  });
 }

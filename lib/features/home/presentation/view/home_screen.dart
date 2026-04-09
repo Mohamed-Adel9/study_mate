@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:study_mate/features/exam/presentation/view/exam_screen.dart';
 import 'package:study_mate/features/subject/presentation/view/subject_screen.dart';
 import '../bloc/nav_bar_cubit.dart';
 import '../bloc/nav_bar_state.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   static const List<Widget> _pages = [
     HomeMainScreen(),
     SubjectScreen(),
-    SubjectScreen(),
+    ExamScreen(),
     SubjectScreen(),
     SubjectScreen(),
   ];
