@@ -101,11 +101,12 @@ class _ExamScreenState extends State<ExamScreen> {
                             const SizedBox(height: 16),
                             itemBuilder: (context, index) {
                               final exam = exams[index];
+                              final isDone = exam.isDone;
                               return GestureDetector(
-                                onLongPress: () {
-                                  context.read<ExamCubit>().deleteExam(state.exams[index].id);
-                                },
-                                  child: examCard(exam));
+                                  onLongPress: () {
+                                    context.read<ExamCubit>().deleteExam(state.exams[index].id);
+                                  },
+                                  child: examCard(exam,isDone));
                             },
                           ),
                         ),

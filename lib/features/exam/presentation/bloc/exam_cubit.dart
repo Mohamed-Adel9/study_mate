@@ -30,7 +30,24 @@ class ExamCubit extends Cubit<ExamState> {
     emit(ExamLoading());
     try {
       final exams = await getExamsUseCase();
-      emit(ExamLoaded(exams));
+
+      final now = DateTime.now();
+      bool anyUpdated = false;
+
+      final updatedExams = exams.map((exam) {
+        if (!exam.isDone && exam.date.isBefore(now)) {
+          anyUpdated = true;
+          return exam.copyWith(isDone: true);
+        }
+        return exam;
+      }).toList();
+
+      // Persist only if at least one exam was updated
+      if (anyUpdated) {
+        await addExamsUseCase(updatedExams); // replaces the full list
+      }
+
+      emit(ExamLoaded(updatedExams));
     } catch (e) {
       emit(ExamError(e.toString()));
     }
@@ -41,6 +58,7 @@ class ExamCubit extends Cubit<ExamState> {
     final subjectId = state.selectedSubjectId;
     final subjectName = state.selectedSubjectName ?? subjectId ?? '';
     final date = state.selectedDate;
+    final isDone = state.isDone;
     final time = state.selectedTime;
 
     if (subjectId == null || date == null || time == null) return;
@@ -58,6 +76,7 @@ class ExamCubit extends Cubit<ExamState> {
       subjectId: subjectId,
       subjectName: subjectName,
       date: examDateTime,
+      isDone: isDone,
     );
 
     try {

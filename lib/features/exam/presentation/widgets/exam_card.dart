@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/exam_helper.dart';
 
-Widget examCard(dynamic exam) {
+Widget examCard(dynamic exam,bool isDone) {
   final days = getDaysLeft(exam.date);
   final urgent = isUrgent(exam.date);
 
@@ -10,7 +10,7 @@ Widget examCard(dynamic exam) {
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
-      border: urgent ? Border.all(color: Colors.red) : null,
+      border: urgent && !isDone ? Border.all(color: Colors.red) : null,
       boxShadow: [
         BoxShadow(
           color: Colors.black.withValues(alpha: 0.05),
@@ -26,10 +26,10 @@ Widget examCard(dynamic exam) {
           width: 60,
           height: 60,
           decoration: BoxDecoration(
-            color: urgent ? Colors.red : Colors.blue,
+            color: urgent && !isDone ? Colors.red : Colors.blue,
             borderRadius: BorderRadius.circular(16),
           ),
-          child: const Icon(Icons.calendar_month, color: Colors.white),
+          child: const Icon(Icons.calendar_month_outlined, color: Colors.white),
         ),
 
         const SizedBox(width: 12),
@@ -47,7 +47,15 @@ Widget examCard(dynamic exam) {
               const SizedBox(height: 4),
               Text(exam.date.toString().substring(0, 10)),
 
-              if (urgent)
+              if(isDone)
+                const Row(
+                  children: [
+                    Icon(Icons.check, color: Colors.green, size: 14),
+                    SizedBox(width: 4),
+                    Text("تم", style: TextStyle(color: Colors.green)),
+                  ],
+                ),
+              if (urgent && !isDone)
                 const Row(
                   children: [
                     Icon(Icons.error, color: Colors.red, size: 14),
@@ -61,8 +69,16 @@ Widget examCard(dynamic exam) {
 
         /// Days
         Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
+            isDone ? Text(
+        "Done",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: urgent ? Colors.green : Colors.black,
+          ),
+        ):Text(
               "${days+1}",
               style: TextStyle(
                 fontSize: 28,
@@ -70,7 +86,7 @@ Widget examCard(dynamic exam) {
                 color: urgent ? Colors.red : Colors.black,
               ),
             ),
-            const Text("يوم"),
+            isDone? Text("اضغط مطولا للحذف"): Text("يوم"),
           ],
         )
       ],

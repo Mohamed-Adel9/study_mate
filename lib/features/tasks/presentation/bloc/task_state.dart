@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../data/model/exam_model.dart';
+import '../../data/model/task_model.dart';
 
-class ExamState {
+class TaskState {
   final String? selectedSubjectId;
   final String? selectedSubjectName;
   final DateTime? selectedDate;
@@ -10,21 +10,22 @@ class ExamState {
   final bool isLoading;
   final bool isDone;
   final String? error;
+  final String? title;
   final bool clearSubject;
   final bool clearDate;
   final bool clearTime;
 
-  ExamState({
+  TaskState({
     this.selectedSubjectName,
     this.selectedSubjectId,
     this.selectedDate,
     this.selectedTime,
     this.isLoading = false,
     this.error, this.clearSubject = false,  this.clearDate=false,  this.clearTime=false,
-     this.isDone = false,
+     this.isDone = false, this.title,
   });
 
-  ExamState copyWith({
+  TaskState copyWith({
     String? selectedSubjectId,
     String? selectedSubjectName,
     DateTime? selectedDate,
@@ -32,11 +33,12 @@ class ExamState {
     bool? isLoading,
     bool? isDone,
     String? error,
+    String? title,
     bool clearSubject = false,
     bool clearDate = false,
     bool clearTime = false,
   }) {
-    return ExamState(
+    return TaskState(
       selectedSubjectId:
           clearSubject ? null : (selectedSubjectId ?? this.selectedSubjectId),
       selectedSubjectName:
@@ -46,26 +48,28 @@ class ExamState {
       isLoading: isLoading ?? this.isLoading,
       isDone: isDone ?? this.isDone,
       error: error,
+      title: title ?? this.title,
     );
   }
 }
 
-class ExamInit extends ExamState {}
+class TaskInit extends TaskState {}
 
-class ExamLoading extends ExamState {}
+class TaskLoading extends TaskState {}
 
-class ExamLoaded extends ExamState {
-  final List<ExamModel> exams;
+class TaskLoaded extends TaskState {
+  final List<TaskModel> tasks;
 
-  ExamLoaded(this.exams, {
+  TaskLoaded(this.tasks, {
     super.selectedSubjectId,
     super.selectedSubjectName,
     super.selectedDate,
     super.selectedTime,
+    super.title,
   });
 
   @override
-  ExamState copyWith({
+  TaskState copyWith({
     String? selectedSubjectId,
     String? selectedSubjectName,
     DateTime? selectedDate,
@@ -73,22 +77,24 @@ class ExamLoaded extends ExamState {
     bool? isLoading,
     bool? isDone,
     String? error,
+    String? title,
     bool clearSubject = false,
     bool clearDate = false,
     bool clearTime = false,
   }) {
-    return ExamLoaded(
-      exams,
+    return TaskLoaded(
+      tasks,
       selectedSubjectId: clearSubject ? null : (selectedSubjectId ?? this.selectedSubjectId),
       selectedSubjectName: clearSubject ? null : (selectedSubjectName ?? this.selectedSubjectName),
       selectedDate: clearDate ? null : (selectedDate ?? this.selectedDate),
       selectedTime: clearTime ? null : (selectedTime ?? this.selectedTime),
+      title: title ?? this.title,
     );
   }
 }
 
-class ExamError extends ExamState {
+class TaskError extends TaskState {
   final String message;
 
-  ExamError(this.message);
+  TaskError(this.message);
 }

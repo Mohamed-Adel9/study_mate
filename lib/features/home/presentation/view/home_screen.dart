@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_mate/features/exam/presentation/view/exam_screen.dart';
 import 'package:study_mate/features/subject/presentation/view/subject_screen.dart';
+import 'package:study_mate/features/tasks/presentation/view/task_screen.dart';
 import '../bloc/nav_bar_cubit.dart';
 import '../bloc/nav_bar_state.dart';
 import '../widgets/bottom_nav_bar.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
     HomeMainScreen(),
     SubjectScreen(),
     ExamScreen(),
-    SubjectScreen(),
+    TaskScreen(),
     SubjectScreen(),
   ];
 

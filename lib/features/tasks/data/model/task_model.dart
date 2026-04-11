@@ -1,22 +1,24 @@
 
-import '../../domain/entity/exam_entity.dart';
+import '../../domain/entity/task_entity.dart';
 
-class ExamModel extends ExamEntity {
-  ExamModel({
+class TaskModel extends TaskEntity {
+  TaskModel({
     required super.id,
     required super.subjectId,
     required super.subjectName,
     required super.date,
     required super.isDone,
+    required super.title,
   });
 
-  factory ExamModel.fromJson(Map<String, dynamic> json) {
-    return ExamModel(
+  factory TaskModel.fromJson(Map<String, dynamic> json) {
+    return TaskModel(
         id: json['id'],
         subjectId: json['subjectId'],
         subjectName: json['subjectName'],
         date: (json['date'])as DateTime,
         isDone: json['isDone'],
+      title: json['title'],
     );
   }
 
@@ -27,23 +29,26 @@ class ExamModel extends ExamEntity {
       "subjectName":subjectName,
       "date":date,
       "isDone":isDone,
+      "title":title,
 
     };
   }
 
-  ExamModel copyWith({
+  TaskModel copyWith({
     String? id,
     String? subjectId,
+    String? title,
     String? subjectName,
     DateTime? date,
     bool? isDone,
   }) {
-    return ExamModel(
+    return TaskModel(
       id: id ?? this.id,
       subjectId: subjectId ?? this.subjectId,
       subjectName: subjectName ?? this.subjectName,
       date: date ?? this.date,
       isDone: isDone ?? this.isDone,
+      title: title ?? this.title,
     );
   }
 }
