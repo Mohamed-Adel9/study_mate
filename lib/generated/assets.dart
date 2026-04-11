@@ -34,8 +34,6 @@ class Assets {
   static const String navBarToDoList = 'assets/images/nav_bar/to-do-list.png';
   static const String navigationAppRouter = 'lib/core/navigation/app_router.dart';
   static const String navigationRouteNames = 'lib/core/navigation/route_names.dart';
-  static const String presentationViewAddExamScreen = 'lib/features/tasks/presentation/view/add_task_screen.dart';
-  static const String presentationWidgetsTaskCard = 'lib/features/tasks/presentation/widgets/task_card.dart';
   static const String repositoryExamRepository = 'lib/features/exam/domain/repository/exam_repository.dart';
   static const String repositoryExamRepositoryImpl = 'lib/features/exam/data/repository/exam_repository_impl.dart';
   static const String repositorySubjectRepository = 'lib/features/subject/domain/repository/subject_repository.dart';
@@ -62,8 +60,9 @@ class Assets {
   static const String useCasesGetTaskUseCase = 'lib/features/tasks/domain/use_cases/get_task_use_case.dart';
   static const String utilsDateHelper = 'lib/core/utils/date_helper.dart';
   static const String utilsExamHelper = 'lib/core/utils/exam_helper.dart';
-  static const String viewAddExamScreen = 'lib/features/exam/presentation/view/add_task_screen.dart';
+  static const String viewAddExamScreen = 'lib/features/exam/presentation/view/add_exam_screen.dart';
   static const String viewAddSubjectScreen = 'lib/features/subject/presentation/view/add_subject_screen.dart';
+  static const String viewAddTaskScreen = 'lib/features/tasks/presentation/view/add_task_screen.dart';
   static const String viewExamScreen = 'lib/features/exam/presentation/view/exam_screen.dart';
   static const String viewHomeMainScreen = 'lib/features/home/presentation/view/home_main_screen.dart';
   static const String viewHomeScreen = 'lib/features/home/presentation/view/home_screen.dart';
@@ -81,7 +80,7 @@ class Assets {
   static const String widgetsSubjectCard = 'lib/features/subject/presentation/widgets/subject_card.dart';
   static const String widgetsSubjectGrid = 'lib/features/subject/presentation/widgets/subject_grid.dart';
   static const String widgetsSubjectHeader = 'lib/features/subject/presentation/widgets/subject_header.dart';
-  static const String widgetsTaskCard = 'lib/features/home/presentation/widgets/task_card.dart';
+  static const String widgetsTaskCard = 'lib/features/tasks/presentation/widgets/task_card.dart';
   static const String widgetsTasksSection = 'lib/features/home/presentation/widgets/tasks_section.dart';
 
 }

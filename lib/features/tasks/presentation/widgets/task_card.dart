@@ -8,8 +8,9 @@ import '../bloc/task_cubit.dart';
 class TaskCard extends StatelessWidget {
   final TaskModel task;
 
-  const TaskCard({super.key, required this.task});
+  const TaskCard({super.key, required this.task,this.onToggle});
 
+  final VoidCallback? onToggle;
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<TaskCubit>();
@@ -23,7 +24,7 @@ class TaskCard extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () => cubit.toggleTask(task),
+            onTap: onToggle ?? () => cubit.toggleTask(task),
             child: Icon(
               task.isDone
                   ? Icons.check_circle

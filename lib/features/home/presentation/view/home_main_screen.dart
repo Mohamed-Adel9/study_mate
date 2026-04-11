@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_mate/core/theme/app_colors.dart';
 import 'package:study_mate/features/home/presentation/bloc/home/home_cubit.dart';
 import 'package:study_mate/features/home/presentation/bloc/home/home_state.dart';
+import 'package:study_mate/features/tasks/presentation/bloc/task_cubit.dart';
 import '../../../../core/service_locator/service_locator.dart';
 import '../widgets/exam_section.dart';
 import '../widgets/home_header.dart';
@@ -14,9 +15,16 @@ class HomeMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return MultiBlocProvider(
+  providers: [
+    BlocProvider(
       create: (context) => sl<HomeCubit>()..loadHome(),
-        child: Builder(
+),
+    BlocProvider(
+      create: (context) => sl<TaskCubit>()..getTasks(),
+    ),
+  ],
+  child: Builder(
           builder: (context) {
             return SafeArea(
               child: Scaffold(
@@ -54,9 +62,10 @@ class HomeMainScreen extends StatelessWidget {
                                             completedTasks: data.completedTasks,
                                             tasks: data.totalTasks),
                                         SizedBox(height: 20),
-                                        ExamsSection(exams: data.exams,),
+                                        TasksSection(tasks: data.todayTasks,),
                                         SizedBox(height: 20),
-                                        TasksSection(),
+                                        ExamsSection(exams: data.exams,),
+
 
                                       ],
                                     );
@@ -77,6 +86,6 @@ class HomeMainScreen extends StatelessWidget {
             );
           },
         ),
-      );
+);
   }
 }

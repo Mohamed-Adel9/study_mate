@@ -40,7 +40,7 @@ Future<void> setupGetIt() async {
     () => ExamLocalDataSourceImpl(),
   );
   sl.registerLazySingleton<TaskLocalDataSource>(
-        () => TaskLocalDataSourceImpl(),
+    () => TaskLocalDataSourceImpl(),
   );
 
   ///📦 Repository
@@ -91,7 +91,7 @@ Future<void> setupGetIt() async {
   );
 
   sl.registerFactory(
-        () => TaskCubit(
+    () => TaskCubit(
       addTasksUseCase: sl(),
       getTasksUseCase: sl(),
       deleteTaskUseCase: sl(),
@@ -100,5 +100,5 @@ Future<void> setupGetIt() async {
     ),
   );
 
-  sl.registerFactory(() => HomeCubit(sl(), sl()));
+  sl.registerFactory(() => HomeCubit(sl(), sl(), sl(), sl()));
 }

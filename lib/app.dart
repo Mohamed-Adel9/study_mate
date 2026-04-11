@@ -10,7 +10,7 @@ class StudyMateApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Study Mate',
-
+      debugShowCheckedModeBanner: false,
       ///theme
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,

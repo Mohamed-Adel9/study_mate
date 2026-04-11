@@ -4,5 +4,7 @@ class RouteNames {
   static const exam = '/exam';
   static const addSubject = '/addSubject';
   static const addExam = '/addExam';
+  static const task = '/task';
+  static const addTask = '/addTask';
 
 }

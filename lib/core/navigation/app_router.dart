@@ -4,6 +4,9 @@ import 'package:study_mate/core/navigation/route_names.dart';
 import 'package:study_mate/features/exam/presentation/view/exam_screen.dart';
 import 'package:study_mate/features/home/presentation/bloc/nav_bar_cubit.dart';
 import 'package:study_mate/features/subject/presentation/view/add_subject_screen.dart';
+import 'package:study_mate/features/tasks/presentation/bloc/task_cubit.dart';
+import 'package:study_mate/features/tasks/presentation/view/add_task_screen.dart';
+import 'package:study_mate/features/tasks/presentation/view/task_screen.dart';
 
 import '../../features/exam/presentation/bloc/exam_cubit.dart';
 import '../../features/exam/presentation/view/add_exam_screen.dart';
@@ -41,6 +44,26 @@ class AppRouter {
             ],
             child: AddExamScreen(),
           ),
+        );
+
+
+    /// task router
+      case RouteNames.task:
+        return MaterialPageRoute(builder: (context) => TaskScreen());
+      case RouteNames.addTask:
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+  providers: [
+    BlocProvider(
+            create: (context) => sl<TaskCubit>()..getTasks(),
+),
+    BlocProvider(
+      create: (context) => sl<SubjectCubit>()..getSubjects(),
+    ),
+
+  ],
+  child: AddTaskScreen(),
+),
         );
 
       ///home router

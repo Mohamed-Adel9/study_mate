@@ -186,10 +186,6 @@ class TaskCubit extends Cubit<TaskState> {
 
   /// ── Validation ─────────────────────────
   bool validate() {
-    print("title: ${state.title}");
-    print("subject: ${state.selectedSubjectName}");
-    print("date: ${state.selectedDate}");
-    print("time: ${state.selectedTime}");
     return state.selectedSubjectId != null &&
         state.selectedDate != null &&
         state.selectedTime != null &&

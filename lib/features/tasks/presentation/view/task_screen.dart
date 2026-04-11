@@ -19,7 +19,6 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -29,17 +28,11 @@ class _TaskScreenState extends State<TaskScreen> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) =>
-          sl<TaskCubit>()
-            ..getTasks(),
-        ),
-        BlocProvider(
-          create: (context) => sl<SubjectCubit>()..getSubjects(),
-        ),
+        BlocProvider(create: (context) => sl<TaskCubit>()..getTasks()),
+        BlocProvider(create: (context) => sl<SubjectCubit>()..getSubjects()),
       ],
       child: Builder(
-        builder: (context) =>Scaffold(
+        builder: (context) => Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               Navigator.push(
@@ -75,7 +68,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         /// Title + progress
-                        AddThingHeader(label: "جدول الدراسة",),
+                        AddThingHeader(label: "جدول الدراسة"),
                         const SizedBox(height: 6),
                         Text("تم إنجاز $done من ${tasks.length} مهام "),
 
@@ -89,12 +82,16 @@ class _TaskScreenState extends State<TaskScreen> {
                           child: tasks.isEmpty
                               ? const EmptyTasksWidget()
                               : ListView.separated(
-                            itemCount: tasks.length,
-                            separatorBuilder: (_, _) =>
-                            const SizedBox(height: 12),
-                            itemBuilder: (_, i) =>
-                                TaskCard(task: tasks[i]),
-                          ),
+                                  itemCount: tasks.length,
+                                  separatorBuilder: (_, _) =>
+                                      const SizedBox(height: 12),
+                                  itemBuilder: (_, i) => GestureDetector(
+                                    onLongPress: () {
+                                      cubit.deleteTask(tasks[i].id);
+                                    },
+                                    child: TaskCard(task: tasks[i]),
+                                  ),
+                                ),
                         ),
                       ],
                     );
@@ -105,8 +102,7 @@ class _TaskScreenState extends State<TaskScreen> {
               ),
             ),
           ),
-        ) ,
-
+        ),
       ),
     );
   }
